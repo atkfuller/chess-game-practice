@@ -6,6 +6,7 @@ public class MoveFactory {
             case KING:
                 return new KingMove();
             case QUEEN:
+                return new QueenMove();
             case PAWN:
                 return new PawnMove();
             case ROOK:
