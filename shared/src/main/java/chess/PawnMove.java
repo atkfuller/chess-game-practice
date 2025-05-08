@@ -15,6 +15,7 @@ public class PawnMove implements MoveCalc{
         else{
             moves.addAll(moveByColor(board, myPosition, 7,1, -1));
         }
+        return moves;
         //things to do:
         //write how it moves regardless of color
         //moves up one inititally and then two if its at the start row
@@ -41,8 +42,10 @@ public class PawnMove implements MoveCalc{
             if(myRow==startRow){
                 row=row+rowIncr;
                 newPosition= new ChessPosition(row, col);
-                ChessMove move=new ChessMove(myPosition, newPosition, null);
-                moves.add(move);
+                if(board.inBound(newPosition)&&board.emptyPosition(newPosition)) {
+                    ChessMove move = new ChessMove(myPosition, newPosition, null);
+                    moves.add(move);
+                }
             }
         }
         //diagonally left
@@ -77,8 +80,10 @@ public class PawnMove implements MoveCalc{
     private Collection<ChessMove>promoteAddPawn(ChessPosition startPos, ChessPosition endPos) {
         Collection<ChessMove> moves= new ArrayList<>();
         for(ChessPiece.PieceType type: ChessPiece.PieceType.values()){
-            ChessMove move= new ChessMove(startPos, endPos, type);
-            moves.add(move);
+            if(type!= ChessPiece.PieceType.KING && type!= ChessPiece.PieceType.PAWN) {
+                ChessMove move = new ChessMove(startPos, endPos, type);
+                moves.add(move);
+            }
         }
         return moves;
     }
