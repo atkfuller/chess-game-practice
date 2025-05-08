@@ -87,9 +87,9 @@ public class ChessBoard {
                 addPiece(position, piece);
                 break;
             case PAWN:
-                row=row+incr;
-                for(col=1; col<8; col++){
-                    position= new ChessPosition(row, col);
+                int prow=row+incr;
+                for(col=1; col<=8; col++){
+                    position= new ChessPosition(prow, col);
                     addPiece(position, piece);
                 }
                 break;
