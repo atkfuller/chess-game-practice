@@ -57,7 +57,52 @@ public class ChessBoard {
     public void resetBoard() {
         board=new ChessPiece[8][8];
         for(ChessPiece.PieceType type: ChessPiece.PieceType.values()){
-
+            addByColor(ChessGame.TeamColor.WHITE,type);
+            addByColor(ChessGame.TeamColor.BLACK, type);
+        }
+    }
+    private void addByColor(ChessGame.TeamColor color, ChessPiece.PieceType type){
+        ChessPiece piece=new ChessPiece(color, type);
+        ChessPosition position;
+        int row;
+        int col;
+        if(color== ChessGame.TeamColor.WHITE){
+            row=1;
+        }
+        else{
+            row=8;
+        }
+        switch(type){
+            case KING:
+                col=5;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+            case QUEEN:
+                col=4;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+            case PAWN:
+            case ROOK:
+                col=1;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+                col=8;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+            case BISHOP:
+                col=3;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+                col=6;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+            case KNIGHT:
+                col=2;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
+                col=7;
+                position= new ChessPosition(row, col);
+                addPiece(position, piece);
         }
     }
     public boolean inBound(ChessPosition position){
