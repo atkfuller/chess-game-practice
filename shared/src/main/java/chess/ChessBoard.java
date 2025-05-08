@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -7,9 +10,9 @@ package chess;
  * signature of the existing methods.
  */
 public class ChessBoard {
-
+    private ChessPiece[][] board=new ChessPiece[8][8];
     public ChessBoard() {
-        
+
     }
 
     /**
@@ -18,8 +21,22 @@ public class ChessBoard {
      * @param position where to add the piece to
      * @param piece    the piece to add
      */
-    public void addPiece(ChessPosition position, ChessPiece piece) {
-        throw new RuntimeException("Not implemented");
+    public void addPiece(ChessPosition position, ChessPiece piece){
+        board[8-position.getRow()][position.getColumn()-1]=piece;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChessBoard that = (ChessBoard) o;
+        return Objects.deepEquals(board, that.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(board);
     }
 
     /**
@@ -30,7 +47,7 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+        return  board[8-position.getRow()][position.getColumn()-1];
     }
 
     /**
@@ -38,6 +55,30 @@ public class ChessBoard {
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+        board=new ChessPiece[8][8];
+        for(ChessPiece.PieceType type: ChessPiece.PieceType.values()){
+
+        }
+    }
+    public boolean inBound(ChessPosition position){
+        int row=position.getRow();
+        int col= position.getColumn();;
+        if(row>8| row<1 | col>8 | col<1){
+            return false;
+        }
+        return true;
+    }
+    public boolean emptyPosition(ChessPosition position){
+        if(getPiece(position)==null){
+            return true;
+        }
+        return false;
+    }
+    public boolean enemyPiece(ChessPosition newPosition, ChessPiece myPiece){
+        ChessGame.TeamColor myColor= myPiece.getTeamColor();
+        if(getPiece(newPosition).getTeamColor()!=myColor){
+            return true;
+        }
+        return false;
     }
 }
