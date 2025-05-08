@@ -7,6 +7,7 @@ import java.util.List;
 public class BishopMove implements MoveCalc {
     @Override
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
+        //bishop
         Collection<ChessMove> moves= new ArrayList<>();
         int[][] directions={
                  {1,1}, {-1,1}, {-1,-1}, {1,-1}
