@@ -9,6 +9,7 @@ public class MoveFactory {
             case PAWN:
                 return new PawnMove();
             case ROOK:
+                return new RookMove();
             case BISHOP:
                 return new BishopMove();
             case KNIGHT:
