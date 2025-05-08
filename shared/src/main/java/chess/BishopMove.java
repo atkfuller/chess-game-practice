@@ -26,6 +26,7 @@ public class BishopMove implements MoveCalc {
                 else if(board.enemyPiece(newPosition, myPiece)){
                     ChessMove move = new ChessMove(myPosition, newPosition, null);
                     moves.add(move);
+                    break;
                 }else{
                     break;
                 }
