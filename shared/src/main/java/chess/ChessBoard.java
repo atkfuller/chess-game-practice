@@ -66,11 +66,14 @@ public class ChessBoard {
         ChessPosition position;
         int row;
         int col;
+        int incr;
         if(color== ChessGame.TeamColor.WHITE){
             row=1;
+            incr=1;
         }
         else{
             row=8;
+            incr=-1;
         }
         switch(type){
             case KING:
@@ -82,6 +85,11 @@ public class ChessBoard {
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
             case PAWN:
+                row=row+incr;
+                for(col=1; col<8; col++){
+                    position= new ChessPosition(row, col);
+                    addPiece(position, piece);
+                }
             case ROOK:
                 col=1;
                 position= new ChessPosition(row, col);
