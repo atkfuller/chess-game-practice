@@ -80,16 +80,19 @@ public class ChessBoard {
                 col=5;
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
+                break;
             case QUEEN:
                 col=4;
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
+                break;
             case PAWN:
                 row=row+incr;
                 for(col=1; col<8; col++){
                     position= new ChessPosition(row, col);
                     addPiece(position, piece);
                 }
+                break;
             case ROOK:
                 col=1;
                 position= new ChessPosition(row, col);
@@ -97,6 +100,7 @@ public class ChessBoard {
                 col=8;
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
+                break;
             case BISHOP:
                 col=3;
                 position= new ChessPosition(row, col);
@@ -104,6 +108,7 @@ public class ChessBoard {
                 col=6;
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
+                break;
             case KNIGHT:
                 col=2;
                 position= new ChessPosition(row, col);
@@ -111,6 +116,7 @@ public class ChessBoard {
                 col=7;
                 position= new ChessPosition(row, col);
                 addPiece(position, piece);
+                break;
         }
     }
     public boolean inBound(ChessPosition position){
