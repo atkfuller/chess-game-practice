@@ -75,6 +75,9 @@ public class ChessBoard {
         return false;
     }
     public boolean enemyPiece(ChessPosition newPosition, ChessPiece myPiece){
+        if(emptyPosition(newPosition)){
+            return false;
+        }
         ChessGame.TeamColor myColor= myPiece.getTeamColor();
         if(getPiece(newPosition).getTeamColor()!=myColor){
             return true;

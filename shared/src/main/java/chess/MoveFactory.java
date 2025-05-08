@@ -7,8 +7,10 @@ public class MoveFactory {
                 return new KingMove();
             case QUEEN:
             case PAWN:
+                return new PawnMove();
             case ROOK:
             case BISHOP:
+                return new BishopMove();
             case KNIGHT:
             case null, default:
                 return new NullMove();
