@@ -12,6 +12,7 @@ public class MoveFactory {
             case BISHOP:
                 return new BishopMove();
             case KNIGHT:
+                return new KnightMove();
             case null, default:
                 return new NullMove();
         }
